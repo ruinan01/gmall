@@ -7,6 +7,7 @@
         <artifactId>gmall</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+
     <groupId>com.atguigu</groupId>
     <artifactId>gmall-wms</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -72,7 +73,6 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-
     </dependencies>
 
     <build>
