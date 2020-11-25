@@ -1,0 +1,22 @@
+server:
+  port: 18081
+mybatis-plus:
+  mapper-locations: classpath:mapper/pms/**/*.xml  # 读取映射文件
+  type-aliases-package: com.atguigu.gmall.pms.entity
+  global-config:
+    db-config:
+      id-type: auto # 默认使用数据库自增
+feign:
+  sentinel:
+    enabled: true
+logging:
+  level:
+    com.atguigu.gmall: debug
+spring:
+  rabbitmq:
+    host: 192.168.93.128
+    virtual-host: /ruinan
+    username: ruinan
+    password: ruinan
+    publisher-confirm-type: correlated
+    publisher-returns: true

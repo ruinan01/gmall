@@ -1,0 +1,42 @@
+server:
+  port: 18086
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+        port: 8719
+  zipkin:
+    base-url: http://localhost:9411
+    discovery-client-enabled: true
+    sender:
+      type: web
+  sleuth:
+    sampler:
+      probability: 1
+  elasticsearch:
+    rest:
+      uris: http://192.168.93.128:9200
+  jackson:
+    default-property-inclusion: non_null
+  thymeleaf:
+    cache: false
+  rabbitmq:
+    host: 192.168.93.128
+    virtual-host: /ruinan
+    username: ruinan
+    password: ruinan
+    listener:
+      simple:
+        prefetch: 1
+        concurrency: 4
+        acknowledge-mode: manual
+feign:
+  sentinel:
+    enabled: true
+logging:
+  level:
+    com.atguigu.gmall: debug
