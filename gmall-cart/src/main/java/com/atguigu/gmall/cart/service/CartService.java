@@ -47,7 +47,7 @@ public class CartService {
 
     public void addCart(Cart cart) {
 
-        String userId = this.getUserId();
+        String userId = this.getUserId();  // 获取登录信息 是登录还是未登录
         // 通过外层的key获取内层的map结构
         BoundHashOperations<String, Object, Object> hashOps = this.redisTemplate.boundHashOps(KEY_PREFIX + userId);
 
@@ -113,7 +113,7 @@ public class CartService {
     }
 
     public Cart queryCartBySkuId(Long skuId) {  // 查询购物车
-        String userId = this.getUserId();
+        String userId = this.getUserId();  // 下面这个获取登录信息的方法
 
         // 获取内层的map
         BoundHashOperations<String, Object, Object> hashOps = this.redisTemplate.boundHashOps(KEY_PREFIX + userId);
@@ -130,7 +130,7 @@ public class CartService {
         // 获取登录信息.如果userId不为空,就以userId为key
         // 如果userId为空,就以userKey作为key
         UserInfo userInfo = LoginInterceptor.getUserInfo();
-        // String userId = userInfo.getUserId().toString(); // userId 没有登录为空点toString就出现异常了
+        // String userId = userInfo.getUserId().toString(); // userId 没有登录为空  点toString就出现异常了
         if (userInfo.getUserId() == null) {
             return userInfo.getUserKey();
         }
@@ -180,7 +180,7 @@ public class CartService {
                             this.cartAsyncService.updateCart(userId.toString(),cart);
                         } else {
                             // 登录状态的购物车中不包含该记录,新增一条记录
-                            cart.setUserId(userId.toString()); // 一个是userId一个是userKey 要修改为userId
+                            cart.setUserId(userId.toString()); // 一个是userId 一个是userKey 要修改为userId
                             // 更新到mysql
                             this.cartAsyncService.insertCart(userId.toString(),cart);
                         }

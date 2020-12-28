@@ -18,7 +18,7 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @GetMapping("confirm")
+    @GetMapping("confirm888")
     public String confirm(Model model) {
         OrderConfirmVo confirmVo = this.orderService.confirm();
         model.addAttribute("confirmVo",confirmVo);
