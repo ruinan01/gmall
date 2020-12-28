@@ -33,7 +33,7 @@ public class AttrController {
 
     @Autowired
     private AttrService attrService;
-
+// 1
     @GetMapping("category/{cid}")
     public ResponseVo<List<AttrEntity>> queryAttrsByCidAndTypeOrSearchType(
             @PathVariable("cid")Long cid,
